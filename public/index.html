@@ -11,7 +11,12 @@
 </head>
 
 <body ng-app="wackamole" ng-controller="MainCtrl">
-  This is the body
+  <div ng-show="highscores.length > 0" ng-repeat="highscore in highscores | orderBy: '-score'">
+    {{highscore.name}} - {{highscore.score}}
+  </div>
+  <div ng-hide="highscores.length > 0">
+    There are no high scores recorded yet
+  </div>
 </body>
 
 </html>
