@@ -13,7 +13,10 @@ angular.module('wackamole', ['ngMaterial'])
 
       function create(obj) {
         $http.post('/highscore', obj).success(function (data) {
-          init();
+          var canvas = document.getElementById("whackamole");
+          var ctx = canvas.getContext("2d");
+          ctx.clearRect(0, 0, 500, 500);
+          $scope.loadGame();
         });
       };
 
@@ -24,43 +27,46 @@ angular.module('wackamole', ['ngMaterial'])
           .textContent('What is your name?')
           .placeholder('Name')
           .ariaLabel('Name')
-          .ok('Continue');
+          .ok('Continue')
+          .cancel('Retry');
 
         $mdDialog.show(confirm).then(function (name) {
           create({ name: name, score: score });
+        }, function () {
+          console.log('This is the cancel');
         });
       }
 
       /* Define Canvas */
-      var canvas;
-      var stage;
+      var canvas = '';
+      var stage = '';
       /* Background */
-      var titleBg;
+      var titleBg = '';
       /* Title View */
       var titleBgImg = new Image();
-      var titleBg;
+      var titleBg = '';
       var playBtnImg = new Image();
-      var playBtn;
+      var playBtn = '';
       var titleView = new Container();
       /* Game Bg */
       var gameBgImg = new Image();
-      var gameBg;
+      var gameBg = '';
       /* Alert */
       var alertBgImg = new Image();
-      var alertBg;
+      var alertBg = '';
       /* Score */
-      var score;
+      var score = 0;
       /* moles */
       var wormImg = new Image();
-      var worm;
+      var worm = '';
       var wormsX = [80, 198, 338, 70, 225, 376, 142, 356];
       var wormsY = [11, 51, 34, 110, 136, 96, 211, 186];
-      var lastWorm;
+      var lastWorm = '';
       /* Variables */
       var centerX = 240;
       var centerY = 160;
       var gfxLoaded = 0;
-      var timerSource;
+      var timerSource = '';
       var currentWorms = 0;
       var wormsHit = 0;
       var totalWorms = 20;
@@ -206,11 +212,6 @@ angular.module('wackamole', ['ngMaterial'])
           stage.addChild(score);
 
           stage.update();
-
-          setTimeout(function () {
-            init();
-            $scope.loadGame();
-          }, 5000);
           checkScore(wormsHit);
         });
       }

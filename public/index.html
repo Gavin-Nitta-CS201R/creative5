@@ -26,20 +26,18 @@
     <div layout="row" layout-align="center center">
       Wack A Mole!
     </div>
-    <div layout="row" layout-align="center center">
+    <div id="whackamole-container" layout="row" layout-align="center center">
       <canvas id="whackamole" width="480" height="320"></canvas>
     </div>
   </md-whiteframe>
 
   <md-whiteframe class="md-whiteframe-12dp scores" flex="25">
     <div ng-show="highscores.length > 0">
-
       <md-toolbar>
         <div class="md-toolbar-tools">
           <md-truncate>High Scores</md-truncate>
         </div>
       </md-toolbar>
-
 
       <md-list layout="column" layout-align="center stretch" flex ng-repeat="highscore in highscores">
         <md-list-item class="md-2-line">

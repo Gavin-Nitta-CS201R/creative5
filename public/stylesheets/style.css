@@ -4,4 +4,5 @@
 
 .scores {
   margin: 10px;
+  overflow-y: scroll;
 }
