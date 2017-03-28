@@ -6,17 +6,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Wack A Mole</title>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <link rel="stylesheet" href="stylesheets/style.css">
   <script src="javascripts/app.js"></script>
+  <script src="javascripts/easel.js"></script>
+  <script src="javascripts/tween.js"></script>
 </head>
 
-<body ng-app="wackamole" ng-controller="MainCtrl">
-  <div ng-show="highscores.length > 0" ng-repeat="highscore in highscores | orderBy: '-score'">
-    {{highscore.name}} - {{highscore.score}}
-  </div>
-  <div ng-hide="highscores.length > 0">
-    There are no high scores recorded yet
-  </div>
+<body ng-app="wackamole" ng-controller="MainCtrl" ng-init="loadGame()" layout="row">
+
+  <md-whiteframe class="md-whiteframe-12dp outerframe" flex="75" layout="column" layout-align="center center">
+    <div layout="row" layout-align="center center">
+      Wack A Mole!
+    </div>
+    <div layout="row" layout-align="center center">
+      <canvas id="whackamole" width="480" height="320"></canvas>
+    </div>
+  </md-whiteframe>
+
+  <md-whiteframe class="md-whiteframe-12dp scores" flex="25">
+    <div ng-show="highscores.length > 0">
+
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-truncate>High Scores</md-truncate>
+        </div>
+      </md-toolbar>
+
+
+      <md-list layout="column" layout-align="center stretch" flex ng-repeat="highscore in highscores">
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h3>{{highscore.name}}</h3>
+            <p>{{highscore.score}}</p>
+          </div>
+        </md-list-item>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list>
+    </div>
+    <div ng-hide="highscores.length > 0">
+      There are no high scores recorded yet
+    </div>
+  </md-whiteframe>
+
 </body>
 
 </html>

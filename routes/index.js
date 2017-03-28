@@ -12,7 +12,7 @@ router.get('/highscore', (req, res, next) => {
   HighScore.find((err, highscores) => {
     if (err) { return next(err); }
     res.json(highscores);
-  });
+  }).sort({ 'score': -1 }).limit(10);
 });
 
 router.post('/highscore', (req, res, next) => {
