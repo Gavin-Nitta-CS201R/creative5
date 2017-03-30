@@ -32,26 +32,21 @@
   </md-whiteframe>
 
   <md-whiteframe class="md-whiteframe-12dp scores" flex="25">
-    <div ng-show="highscores.length > 0">
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <md-truncate>High Scores</md-truncate>
-        </div>
-      </md-toolbar>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-truncate>High Scores</md-truncate>
+      </div>
+    </md-toolbar>
 
-      <md-list layout="column" layout-align="center stretch" flex ng-repeat="highscore in highscores">
-        <md-list-item class="md-2-line">
-          <div class="md-list-item-text">
-            <h3>{{highscore.name}}</h3>
-            <p>{{highscore.score}}</p>
-          </div>
-        </md-list-item>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list>
-    </div>
-    <div ng-hide="highscores.length > 0">
-      There are no high scores recorded yet
-    </div>
+    <md-list layout="column" layout-align="center stretch" flex ng-repeat="highscore in highscores">
+      <md-list-item class="md-2-line">
+        <div class="md-list-item-text">
+          <h3>{{highscore.name}}</h3>
+          <p>{{highscore.score}}</p>
+        </div>
+      </md-list-item>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list>
   </md-whiteframe>
 
 </body>
