@@ -13,10 +13,11 @@ angular.module('wackamole', ['ngMaterial'])
 
       function create(obj) {
         $http.post('/highscore', obj).success(function (data) {
-          var canvas = document.getElementById("whackamole");
-          var ctx = canvas.getContext("2d");
-          ctx.clearRect(0, 0, 500, 500);
-          $scope.loadGame();
+          // DOES NOT WORK!!
+          // var canvas = document.getElementById("whackamole");
+          // var ctx = canvas.getContext("2d");
+          // ctx.clearRect(0, 0, 500, 500);
+          // $scope.loadGame();
         });
       };
 
@@ -60,7 +61,7 @@ angular.module('wackamole', ['ngMaterial'])
       var wormImg = new Image();
       var worm = '';
       var wormsX = [80, 198, 338, 70, 225, 376, 142, 356];
-      var wormsY = [11, 51, 34, 110, 136, 96, 211, 186];
+      var wormsY = [11, 51, 34, 110, 136, 106, 211, 186];
       var lastWorm = '';
       /* Variables */
       var centerX = 240;
@@ -77,11 +78,11 @@ angular.module('wackamole', ['ngMaterial'])
 
         /* Load GFX */
 
-        titleBgImg.src = 'images/titleBg.png';
+        titleBgImg.src = 'images/startScreen.jpg';
         titleBgImg.name = 'titleBg';
         titleBgImg.onload = loadGfx;
 
-        gameBgImg.src = 'images/gameBg.png';
+        gameBgImg.src = 'images/hallway.jpg';
         gameBgImg.name = 'gameBg';
         gameBgImg.onload = loadGfx;
 
@@ -93,7 +94,7 @@ angular.module('wackamole', ['ngMaterial'])
         alertBgImg.name = 'alertBg';
         alertBgImg.onload = loadGfx;
 
-        wormImg.src = 'images/worm.png'; //CHANGE IMG
+        wormImg.src = 'images/ghost2.png'; //CHANGE IMG
         wormImg.name = 'worm';
         wormImg.onload = loadGfx;
 
@@ -180,7 +181,7 @@ angular.module('wackamole', ['ngMaterial'])
           worm.onPress = wormHit;
 
           lastWorm = worm;
-          lastWorm.scaleY = 0.3;
+          // lastWorm.scaleY = 0.3;
           lastWorm.y += 42;
           stage.update();
 
