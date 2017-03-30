@@ -17,7 +17,7 @@ angular.module('wackamole', ['ngMaterial'])
           // var canvas = document.getElementById("whackamole");
           // var ctx = canvas.getContext("2d");
           // ctx.clearRect(0, 0, 500, 500);
-          // $scope.loadGame();
+          init();
         });
       };
 
